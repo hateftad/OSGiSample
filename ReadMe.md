@@ -1,97 +1,123 @@
 
 
+OSGiSample
+==========
 
-För det här programmet har jag använt Eclipse Juno 4.2 med Equinox.
+FÃ¶r det hÃ¤r programmet har jag anvÃ¤nt Eclipse Juno 4.2 med Equinox.
 
-Jag använder consolen i Eclipse så följande bundles är är tillagda i Runtime configurations:
 
-org.apache.felix.gogo.command
-org.apache.felix.gogo.runtime
-org.apache.felix.gogo.shell
-org.eclipse.equinox.console
-org.osgi.framework
-För att köra detta exempel:
+Jag anvÃ¤nder consolen i Eclipse sÃ¥ fÃ¶ljande bundles Ã¤r Ã¤r tillagda i Runtime configurations:
+<ul>
+  <li>org.apache.felix.gogo.command</li>
+  <li>org.apache.felix.gogo.runtime</li>
+  <li>org.apache.felix.gogo.shell</li>
+  <li>org.eclipse.equinox.console</li>
+  <li>org.osgi.framework</li>
+</ul>
+
+<strong>FÃ¶r att kÃ¶ra detta exempel:</strong>
 
 1. Klona projektet eller ladda ner som zip
 2. Se till att Eclipse har Eclipse Plug-in Development Environment installerat.
 3. Importera projektet i Eclipse som ett plugin projekt
-4. Ställ in rätt run configurations (Run->Run Configurations)
-5. Kör programmet (Run->Run As->OSGi Framework)
- 
-Det kan finnas komplikationer i att ClassLoader inte hittar Activator classerna. 
-Detta beror nog på att MANIFEST.MF inte har kännedom av klasserna.
-
-Lösningen är att:
-
-Gör detta för alla bundles.
-
-1. Öppna MANIEFEST.MF
-2. Välj tabben Runtime.
-3. Tillhöger finns Classpath, där trycker du på Add
-4. lägg till mappen src/
+4. StÃ¤ll in rÃ¤tt run configurations (Run->Run Configurations)
+5. KÃ¶r programmet (Run->Run As->OSGi Framework)
+<br/ >
 
 
-Upggiften
+Det kan finnas komplikationer i att ClassLoader inte hittar Activator classerna. <br/ >
+Detta beror nog pÃ¥ att MANIFEST.MF inte har kÃ¤nnedom av klasserna.<br/ ><br/ >
+LÃ¶sningen Ã¤r att:
 
-Upggiften gick ut på att använda någon implementation av OSGi ramverket för att generera tal enligt 
-Fibonaccisekvensen. Lösningen skulle antingen bestå av tre(två klienter och en tjänst) eller flera delar(OSGi bundles). 
-Klienterna ska ta del av tjänsten och skriva ut varsit nummer ur sekvensen: 
+1. Ã–ppna MANIEFEST.MF
+2. VÃ¤lj tabben Runtime.
+3. TillhÃ¶ger finns Classpath, dÃ¤r trycker du pÃ¥ Add
+4. lÃ¤gg till mappen src/
 
-Client-A: 1
-Client-B: 1
-Client-A: 2 
+<strong><i>GÃ¶r detta fÃ¶r alla bundles.</i></strong>
+
+<strong>Upggiften</strong>
+
+Upggiften gick ut pÃ¥ att anvÃ¤nda nÃ¥gon implementation av OSGi ramverket fÃ¶r att generera tal 
+enligt Fibonaccisekvensen.
+LÃ¶sningen skulle antingen bestÃ¥ av tre(tvÃ¥ klienter och en tjÃ¤nst) eller flera delar(OSGi bundles).
+Klienterna ska ta del av tjÃ¤nsten och skriva ut varsit nummer ur sekvensen:
+<br/ >
+<br/ >
+Client-A: 1<br/ >
+Client-B: 1<br/ >
+Client-A: 2 <br/ >
 ....... 
+<br/ >
 
-Som extra tillägg kan man lägga till:
-
-Att man använder sig av konfigurationsmöjligheter i OSGi för att styra hur många tal ur sekvensen som varje klient ska hämta.
-Att man använder någon typ av persistens för att lagra aktuellt tillstånd för fibbonaccitjänsten för att att den ska kunna 
-startas om utan att börja räkna om från början.
-
-Lösning
-
-Jag beslutade att använda mig av två klienter och en tjänst för att slutföra uppgiften. 
-Jag lyckades med att ha två klienter som använder sig av en tjänst och skriver varsit nummer av Fibonacci sekvensen, 
-och även med att tjänsten behåller sitt akutella tillstånd när den avslutas så att den inte börjar räkna om. 
-Däremot fann jag det lite svårare att hitta ett sätt att kontrollera hur många nummer klienterna ska hämta från tjänsten, 
-men har gjort ett upplägg för att det ska vara möjligt, fast jag är inte säker på om det är vad uppgiften kräver.
-Som lösning har jag en variabel som heter m_maxIterations som avgör hur många gånger den ska kalla service.getNextFib(). 
-Men jag är medveten om att det finns någon annan lösning, kanske genom att använda sig av någon implementering av 
-Configuration Admin Service. Om jag hade mer tid skulle jag definitivt läst på lite mer och utforskat olika möjligheter. 
-
-Tjänsten 
-
-En tjänst som heter FibonacciService som implementerar:
+Som extra tillÃ¤gg kan man lÃ¤gga till:
+<ul>
+  <li>Att man anvÃ¤nder sig av konfigurationsmÃ¶jligheter i OSGi fÃ¶r att styra hur mÃ¥nga tal ur sekvensen som
+      varje klient ska hÃ¤mta.</li>
+  <li>Att man anvÃ¤nder nÃ¥gon typ av persistens fÃ¶r att lagra aktuellt tillstÃ¥nd fÃ¶r fibbonaccitjÃ¤nsten fÃ¶r att
+      att den ska kunna startas om utan att bÃ¶rja rÃ¤kna om frÃ¥n bÃ¶rjan.</li>
  
-public interface FibonacciService{ 
-public long getNextFib();
-} 
+</ul>
 
-Detta interface implementeras senare i FibonacciServiceImpl.java som används i FibonacciActivator.java där 
-tjänsten startas. 
+
+<title><strong>LÃ¶sning</strong> </title>
+
+<p>Jag beslutade att anvÃ¤nda mig av tvÃ¥ klienter och en tjÃ¤nst fÃ¶r att slutfÃ¶ra uppgiften. <br />
+Jag lyckades med att ha tvÃ¥ klienter som anvÃ¤nder sig av en tjÃ¤nst och skriver varsit nummer av Fibonacci sekvensen, <br />
+och Ã¤ven med att tjÃ¤nsten behÃ¥ller sitt akutella tillstÃ¥nd nÃ¤r den avslutas sÃ¥ att den inte bÃ¶rjar rÃ¤kna om. <br />
+DÃ¤remot fann jag det lite svÃ¥rare att hitta ett sÃ¤tt att kontrollera hur mÃ¥nga nummer klienterna ska hÃ¤mta frÃ¥n tjÃ¤nsten, <br />
+men har gjort ett upplÃ¤gg fÃ¶r att det ska vara mÃ¶jligt, fast jag Ã¤r inte sÃ¤ker pÃ¥ om det Ã¤r vad uppgiften krÃ¤ver.<br />
+Som lÃ¶sning har jag en variabel som heter m_maxIterations som avgÃ¶r hur mÃ¥nga gÃ¥nger den ska kalla service.getNextFib(). <br /> 
+Men jag Ã¤r medveten om att det finns andra lÃ¶sningar, men valde denna metod fÃ¶r att avsluta uppgiften sÃ¥ snabbt och effektiv som mÃ¶jligt. 
+Om jag hade mer tid skulle jag definitivt lÃ¤st pÃ¥ lite mer och utforskat olika mÃ¶jligheter.
+<br />
+<br />
+<i><strong>TjÃ¤nsten</i></strong>
+<br/>
+<br/>
+
+En tjÃ¤nst som heter FibonacciService som implementerar: 
+<br />
+<code> public interface FibonacciService{</code> <br/>
+        <code>public long getNextFib();</code><br/>
+      <code>}</code>
+      
+<br />
+Detta interface implementeras senare i FibonacciServiceImpl.java som anvÃ¤nds i FibonacciActivator.java dÃ¤r <br />
+tjÃ¤nsten startas.
+<br />
 Jag har gjort en modifiering av detta interface och lagt till metoden: 
+<br />
+<br />
+<code>
+        public int getIndex();
+      </code>
+<br />
+<br />
+Denna metod anvÃ¤nds vid lagring av tjÃ¤nstens tillstÃ¥nd nÃ¤r den avslutas. TjÃ¤nsten anvÃ¤nder sig av ett index <br />
+fÃ¶r att hÃ¥lla kolla pÃ¥ vilket nummer av Fibonacci sekvensen den ska skicka till klienten. Indexet 
+finns i klassen FibonacciServiceImpl. <br />
+Det finns en read och write metod fÃ¶r att spara tjÃ¤nstens tillstÃ¥nd till bundlens privata storage area, <br />
+i det hÃ¤r fallet till en textfil kallad "log.txt". Detta gÃ¶rs nÃ¤r man manuellt stoppar tjÃ¤nsten genom att skriva
+"stop (bundle-id)" i konsolen.
+</p>
 
-public int getIndex(); 
+<i><strong>Klienten</i></strong>
+<p>
 
-Denna metod används vid lagring av tjänstens tillstånd när den avslutas. Tjänsten använder sig av ett index 
-för att hålla kolla på vilket nummer av Fibonacci sekvensen den ska skicka till klienten. Indexet finns i 
-klassen FibonacciServiceImpl. Det finns en read och write metod för att spara tjänstens tillstånd till bundlens 
-privata storage area, i det här fallet till en textfil kallad "log.txt". Detta görs när man manuellt stoppar 
-tjänsten genom att skriva "stop (bundle-id) " i konsolen.
+Klienterna printar ut enligt vad uppgiften begÃ¤r och gÃ¶r det med ett mellanrum av 1 sekund. <br/>
+I deras start metod startas en trÃ¥d som anvÃ¤nder sig av ServiceTracker fÃ¶r att hÃ¤mta tjÃ¤nsten och dÃ¤refter numret. <br/>
+Som jag nÃ¤mnde tidigare finns det en variable (m_maxIterations) som man kan sÃ¤tta som avgÃ¶r hur mÃ¥nga nummer frÃ¥n Fibonacci sekvensen
+Klienten ska hÃ¤mta. Klienten hÃ¤mtar fyra som default.  
+</p>
 
-Klienten
-
-Klienterna printar ut enligt vad uppgiften begär och gör det med ett mellanrum av 3 sekunder. 
-I deras start metod startas en tråd som använder sig av ServiceTracker för att hämta tjänsten och därefter numret. 
-Som jag nämnde tidigare finns det en variable (m_maxIterations) som man kan sätta som avgör hur många nummer 
-från Fibonacci sekvensen Klienten ska hämta. Klienten hämtar fyra som default.
-
-Sammanfattning
-
-Det här var en rolig uppgift och det var roligt och lära sig något nytt. Det var utmanande och försöka sig på någonting som inte har 
-så mycket dokumentation på nätet som man är van vid. Som vidare läsning ska jag försöka läsa mer i böcker om OSGi och försöka 
-mig på lite fler uppgifter, först och främst lära mig hur man skulle kunna göra det jag inte riktigt lyckades med i den här 
-uppgiften. Det har varit en rolig upplevelse, tack.
-
-
-MVH Hatef Tadayon
+<strong>Sammanfattning</strong>
+<p>
+Det hÃ¤r var en rolig uppgift och det var roligt och lÃ¤ra sig nÃ¥got nytt. Det var utmanande och fÃ¶rsÃ¶ka sig pÃ¥ nÃ¥gonting som
+inte har sÃ¥ mycket dokumentation pÃ¥ nÃ¤tet som man Ã¤r van vid. Som vidare lÃ¤sning ska jag fÃ¶rsÃ¶ka lÃ¤sa mer i bÃ¶cker om OSGi
+och fÃ¶rsÃ¶ka mig pÃ¥ lite fler uppgifter, fÃ¶rst och frÃ¤mst lÃ¤ra mig hur man skulle kunna gÃ¶ra det jag inte riktigt lyckades 
+med i den hÃ¤r uppgiften. Det har varit en rolig upplevelse, tack.
+</p>
+<br/>
+MVH <br/>
+Hatef Tadayon
