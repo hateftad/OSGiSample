@@ -1,5 +1,4 @@
 
-
 OSGiSample
 ==========
 
@@ -19,7 +18,7 @@ Jag använder consolen i Eclipse så följande bundles är är tillagda i Runtim
 
 1. Klona projektet eller ladda ner som zip
 2. Se till att Eclipse har Eclipse Plug-in Development Environment installerat.
-3. Importera projektet i Eclipse som ett plugin projekt
+3. Importera alla projekt till Eclipse som ett plugin projekt
 4. Ställ in rätt run configurations (Run->Run Configurations)
 5. Kör programmet (Run->Run As->OSGi Framework)
 <br/ >
