@@ -56,8 +56,8 @@ och även med att tjänsten behåller sitt akutella tillstånd när den avslutas så a
 Däremot fann jag det lite svårare att hitta ett sätt att kontrollera hur många nummer klienterna ska hämta från tjänsten, 
 men har gjort ett upplägg för att det ska vara möjligt, fast jag är inte säker på om det är vad uppgiften kräver.
 Som lösning har jag en variabel som heter m_maxIterations som avgör hur många gånger den ska kalla service.getNextFib(). 
-Men jag är medveten om att det finns någon annan lösning, kanske genom att använda sig av någon implementering av 
-Configuration Admin Service. Om jag hade mer tid skulle jag definitivt läst på lite mer och utforskat olika möjligheter. 
+Men jag är medveten om att det finns andra lösningar(möjligtvis genom att använda sig av någon implementering av Configuration Admin Service) 
+men valde denna metod för att avsluta uppgiften så snabbt och effektivt som möjligt. Om jag hade mer tid skulle jag definitivt läst på lite mer och utforskat olika möjligheter. 
 
 Tjänsten 
 
