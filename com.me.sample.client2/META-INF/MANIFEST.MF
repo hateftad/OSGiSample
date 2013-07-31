@@ -1,0 +1,12 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Client2
+Bundle-SymbolicName: com.me.sample.client2
+Bundle-Version: 1.0.0.qualifier
+Bundle-Activator: com.me.sample.client2.ClientBActivator
+Bundle-Vendor: ME
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Import-Package: com.me.fibonacciservice,
+ org.osgi.framework;version="1.3.0",
+ org.osgi.util.tracker;version="1.5.1"
+Bundle-Property: com.me.iterations = 5 /
