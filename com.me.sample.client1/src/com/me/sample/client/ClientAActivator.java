@@ -13,7 +13,7 @@ public class ClientAActivator implements BundleActivator {
 	@Override
 	public void start(BundleContext context) throws Exception {
 
-		//check if null 
+ 
 		m_tracker = new FibServiceTracker(context, FibonacciService.class.getName(), null);
 		m_tracker.open();
 		m_thread = new MyThread(m_tracker);
@@ -33,8 +33,6 @@ public class ClientAActivator implements BundleActivator {
 		private FibServiceTracker m_tracker;
 		private int m_iterations = 0;
 		private int m_maxIterations = 3;
-
-
 
 		public MyThread(FibServiceTracker tracker) {
 			this.m_tracker = tracker;
@@ -67,6 +65,12 @@ public class ClientAActivator implements BundleActivator {
 
 		public void stopThread() {
 			active = false;
+		}
+		
+		@SuppressWarnings("unused")
+		public void setMaxIterations(int nr)
+		{
+			m_maxIterations = nr;
 		}
 	}
 	
