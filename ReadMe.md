@@ -1,4 +1,3 @@
-
 OSGiSample
 ==========
 
@@ -28,9 +27,9 @@ Det kan finnas komplikationer i att ClassLoader inte hittar Activator classerna.
 Detta beror nog på att MANIFEST.MF inte har kännedom av klasserna.<br/ ><br/ >
 Lösningen är att:
 
-1. Öppna MANIEFEST.MF
+1. Öppna MANIEFEST.MF i Eclipse.
 2. Välj tabben Runtime.
-3. Tillhöger finns Classpath, där trycker du på Add
+3. Tillhöger finns Classpath, där trycker du på Add.
 4. lägg till mappen src/
 
 <strong><i>Gör detta för alla bundles.</i></strong>
