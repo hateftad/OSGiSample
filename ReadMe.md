@@ -109,11 +109,3 @@ Som jag nämnde tidigare finns det en variable (m_maxIterations) som man kan sä
 Klienten ska hämta. Klienten hämtar fyra som default.  
 </p>
 
-<strong>Sammanfattning</strong>
-<p>
-Det här var en rolig uppgift och det var roligt och lära sig något nytt. Det var utmanande och försöka sig på någonting som
-inte har så mycket dokumentation på nätet som man är van vid. Som vidare läsning ska jag försöka läsa mer i böcker om OSGi
-och försöka mig på lite fler uppgifter, först och främst lära mig hur man skulle kunna göra det jag inte riktigt lyckades 
-med i den här uppgiften. Det har varit en rolig upplevelse, tack.
-</p>
-<br/>
