@@ -117,5 +117,3 @@ och försöka mig på lite fler uppgifter, först och främst lära mig hur man 
 med i den här uppgiften. Det har varit en rolig upplevelse, tack.
 </p>
 <br/>
-MVH <br/>
-Hatef Tadayon
